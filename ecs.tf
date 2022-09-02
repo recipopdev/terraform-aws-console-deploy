@@ -34,7 +34,7 @@ resource "aws_ecs_task_definition" "main" {
   memory                   = var.container.memory
   execution_role_arn       = aws_iam_role.main.arn
   task_role_arn            = aws_iam_role.main.arn
-  container_definitions    = [local.main_definition]
+  container_definitions    = "[${local.main_definition}]"
   skip_destroy             = true
   runtime_platform {
     operating_system_family = var.windows_deployment ? "WINDOWS_SERVER_2019_CORE" : "LINUX"
