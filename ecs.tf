@@ -7,7 +7,6 @@ resource "aws_ecs_service" "main" {
   launch_type                       = "FARGATE"
   desired_count                     = var.container.count
   force_new_deployment              = true
-  health_check_grace_period_seconds = var.container.health_check.grace_period
 
   network_configuration {
     security_groups = [aws_security_group.main.id]
