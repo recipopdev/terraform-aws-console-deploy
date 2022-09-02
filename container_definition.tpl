@@ -4,13 +4,7 @@
   "memory": ${memory},
   "name": "${service}",
   "essential": true,
-  "portMappings": ${jsonencode([
-    for port in jsondecode(ports) : {
-      containerPort = port,
-      hostPort = port,
-      protocol = "tcp"
-    }
-  ])},
+  "portMappings": ${jsonencode([])},
   "logConfiguration": {
     "logDriver": "awslogs",
     "options": {
