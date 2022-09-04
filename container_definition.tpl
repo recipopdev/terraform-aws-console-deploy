@@ -5,7 +5,6 @@
   "name": "${service}",
   "essential": true,
   "portMappings": ${jsonencode([])},
-  "logConfiguration": {},
   "environment": ${environment},
   "command": ${commands}
 }
