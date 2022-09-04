@@ -7,7 +7,7 @@ locals {
       image       = var.container.image
       cpu         = var.container.cpu
       memory      = var.container.memory
-      log_groups  = var.log_groups
+      log_groups  = [var.log_group]
       commands    = jsonencode(var.container.commands)
       environment = jsonencode(var.container.environment)
     }
