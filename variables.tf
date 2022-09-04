@@ -31,6 +31,7 @@ variable "network" {
 variable "log_group" {
   description = "The Log group that the service will write to"
   type        = string
+  default     = ""
 }
 
 variable "windows_deployment" {
