@@ -42,14 +42,4 @@ data "aws_iam_policy_document" "main_pull_image" {
       "arn:aws:s3:::prod-region-starport-layer-bucket/*"
     ]
   }
-  statement {
-    actions = [
-      "logs:CreateLogStream",
-      "logs:PutLogEvents",
-      "logs:DescribeLogStreams"
-    ]
-    resources = [
-      "*"
-    ]
-  }
 }
