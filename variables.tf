@@ -28,9 +28,9 @@ variable "network" {
   })
 }
 
-variable "log_group" {
+variable "log_groups" {
   description = "The Log group that the service will write to"
-  type        = string
+  type        = list(string)
 }
 
 variable "windows_deployment" {
