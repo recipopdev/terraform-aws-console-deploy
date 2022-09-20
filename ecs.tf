@@ -1,12 +1,13 @@
 data "aws_region" "current" {}
 
 resource "aws_ecs_service" "main" {
-  name                              = var.service
-  cluster                           = var.cluster
-  task_definition                   = aws_ecs_task_definition.main.arn
-  launch_type                       = "FARGATE"
-  desired_count                     = var.container.count
-  force_new_deployment              = true
+  name                 = var.service
+  cluster              = var.cluster
+  task_definition      = aws_ecs_task_definition.main.arn
+  launch_type          = "FARGATE"
+  desired_count        = var.container.count
+  force_new_deployment = true
+  propagate_tags       = "SERVICE"
 
   network_configuration {
     security_groups = [aws_security_group.main.id]
