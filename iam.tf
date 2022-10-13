@@ -23,7 +23,7 @@ resource "aws_iam_role_policy" "main_pull_image" {
 }
 
 resource "aws_iam_role_policy" "main_publish_logs" {
-  count  = var.logs_enabled ? 1 : 0
+  count  = local.logs_enabled ? 1 : 0
   name   = "${var.service}-publish-logs"
   role   = aws_iam_role.main.id
   policy = data.aws_iam_policy_document.main_publish_logs.json
