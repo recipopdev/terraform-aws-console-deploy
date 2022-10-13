@@ -1,6 +1,6 @@
 locals {
   main_definition = templatefile(
-    "${path.module}/container_definition.tpl",
+    local.logs_enabled ? "${path.module}/container_definition_logging.tpl" : "${path.module}/container_definition.tpl",
     {
       service     = var.service
       region      = data.aws_region.current.name
@@ -9,6 +9,7 @@ locals {
       memory      = var.container.memory
       commands    = jsonencode(var.container.commands)
       environment = jsonencode(var.container.environment)
+      log_group   = var.log_group
     }
   )
 }

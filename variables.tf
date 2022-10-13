@@ -41,5 +41,6 @@ variable "windows_deployment" {
 }
 
 locals {
-  environment = terraform.workspace == "default" ? "dev" : terraform.workspace
+  environment  = terraform.workspace == "default" ? "dev" : terraform.workspace
+  logs_enabled = var.log_group == "" ? false : true
 }

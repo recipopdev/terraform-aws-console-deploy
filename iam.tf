@@ -22,6 +22,13 @@ resource "aws_iam_role_policy" "main_pull_image" {
   policy = data.aws_iam_policy_document.main_pull_image.json
 }
 
+resource "aws_iam_role_policy" "main_publish_logs" {
+  count  = var.logs_enabled ? 1 : 0
+  name   = "${var.service}-publish-logs"
+  role   = aws_iam_role.main.id
+  policy = data.aws_iam_policy_document.main_publish_logs.json
+}
+
 data "aws_iam_policy_document" "main_pull_image" {
   statement {
     actions = [
@@ -40,6 +47,19 @@ data "aws_iam_policy_document" "main_pull_image" {
     ]
     resources = [
       "arn:aws:s3:::prod-region-starport-layer-bucket/*"
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "main_publish_logs" {
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+      "logs:DescribeLogStreams"
+    ]
+    resources = [
+      "*"
     ]
   }
 }
