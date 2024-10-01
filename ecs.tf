@@ -13,16 +13,10 @@ resource "aws_ecs_service" "main" {
     security_groups = [aws_security_group.main.id]
     subnets         = var.network.subnets
   }
-  
+
   deployment_circuit_breaker {
     enable   = true
     rollback = true
-  }
-  
-  lifecycle {
-    ignore_changes = [
-      desired_count
-    ]
   }
 }
 

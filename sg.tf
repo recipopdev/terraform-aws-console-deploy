@@ -1,5 +1,5 @@
 resource "aws_security_group" "main" {
-  name        = "${var.service}"
+  name        = var.service
   description = "${var.service} security group"
   vpc_id      = var.network.vpc
 }
